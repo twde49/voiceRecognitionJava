@@ -1,19 +1,20 @@
 plugins {
-    id("java")
+    application
+    java
 }
 
-group = "org.example"
-version = "1.0-SNAPSHOT"
-
 repositories {
+    mavenLocal()
+    maven("https://oss.sonatype.org/content/repositories/snapshots")
     mavenCentral()
 }
 
 dependencies {
-    testImplementation(platform("org.junit:junit-bom:5.10.0"))
-    testImplementation("org.junit.jupiter:junit-jupiter")
+    implementation("edu.cmu.sphinx:sphinx4-core:5prealpha-SNAPSHOT")
+    implementation("edu.cmu.sphinx:sphinx4-data:5prealpha-SNAPSHOT")
 }
 
-tasks.test {
-    useJUnitPlatform()
+application {
+    // Classe principale que nous définirons dans le code Java
+    mainClass.set("ReconnaissanceVocale.Main")
 }
